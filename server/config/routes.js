@@ -7,11 +7,12 @@ const comments = require("../controllers/comments.js")
   app.get('/comments', comments.index);
   app.post('/comments', comments.create);
 
-app.use(authenticateUser)
+//app.use(authenticateUser)
 
 }
 
 function authenticateUser(req, res, next){
+  console.log('authuser', req.method);
   if(!req.session.user){
     res.redirect('/');
   } else {

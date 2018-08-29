@@ -12,9 +12,9 @@ module.exports = {
   create: function(req, res) {
     console.log('req', req.body);
     knex("comment").insert({
-      content: req.body.content,
-      comment_name: req.body.comment_name,
-      movie_id: req.body.movie_id
+      "content": req.body.content,
+      "comment_name": req.body.comment_name,
+      "movie_id": req.body.movie_id
     }).then((results)=>{
       res.send({results: results})
     })

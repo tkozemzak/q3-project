@@ -19,7 +19,7 @@ export default (state = initialState, action) => {
     case ADD_COMMENT:
       return {
         ...state,
-        comments: [...state.comments, action.payload].sort((a,b)=> a.id > b.id)
+        comments: [...state.comments, ...action.payload].sort((a,b)=> a.id > b.id)
       }
 
     case REMOVE_COMMENT:

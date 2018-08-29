@@ -30,7 +30,7 @@ let listOfComments = this.props.comments.length > 0 ? this.props.comments[0].res
 
     return (
       <div className="comment-section-container">
-        <div>
+        <div className="comment-header">
           <h1>Comments:</h1>
       </div>
             <div className="comment-and-form-container">

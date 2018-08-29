@@ -15,14 +15,21 @@ export const fetchComments = () => {
   }
 }
 
-export const addComment = (comment) => {
-  console.log('comment', comment);
+export const addComment = (newComment) => {
+  console.log('comment', newComment);
   return dispatch => {
-    axios.post(`http://localhost:8000/comments`)
+    axios.post(`http://localhost:8000/comments`, newComment)
       .then(response => dispatch ({
-        type: FETCH_COMMENTS,
-        payload: comment
-      }))
+        type: ADD_COMMENT,
+        payload: response.data
+      })).then(()=>{
+        axios.get(`http://localhost:8000/comments`)
+          .then(response => dispatch ({
+            type: FETCH_COMMENTS,
+            payload: response.data
+          }))
+      
+      })
   }
 }
 export const removeComment = (comment) => {

@@ -58,6 +58,10 @@
   height: 30vh;
 }
 
+.comment-header {
+  margin-bottom: 30px;
+}
+
 .comment-and-form-container {
   display: flex;
   flex-direction: row;
@@ -70,6 +74,8 @@ overflow-y: scroll;
 
 .comment-form {
 flex: 2;
+margin-right: 30px;
+margin-left: 20px;
 }
 
 .comment-card {

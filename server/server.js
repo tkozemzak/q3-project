@@ -8,7 +8,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./config/sessions')(app);
 
-app.set('view engine', 'ejs');
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 var routes_setter = require('./config/routes.js');
 routes_setter(app);

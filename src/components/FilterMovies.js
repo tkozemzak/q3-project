@@ -24,16 +24,20 @@ toggle() {
     return (
       <div>
       <Dropdown disable isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-      <DropdownToggle color="primary" caret>
+      <DropdownToggle color="primary" style={{
+        width: "213px"
+      }}
+      caret>
           Search Movies
         </DropdownToggle>
       <DropdownMenu style={{
         background: "black",
-        border: "none",
+        border: "2px solid white",
         opacity: "0.9"
       }}>
       <DropdownItem disabled>
-        <input type="text" placeholder="Search By Title" onChange={e => this.props.searchMovies(e.target.value)} />
+        <input type="text"
+          placeholder="Search By Title" onChange={e => this.props.searchMovies(e.target.value)} />
       </DropdownItem>
       {listOfSearched}
       </DropdownMenu>
