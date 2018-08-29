@@ -18,8 +18,8 @@ export default class Header extends Component {
   render() {
     return (
       <div>
-        <Navbar color="primary" light>
-          <NavbarBrand href="/" className="mr-auto">header</NavbarBrand>
+        <Navbar color="black" light>
+          <NavbarBrand href="/" className="mr-auto"></NavbarBrand>
           <NavLink><FilterMovies/></NavLink>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>

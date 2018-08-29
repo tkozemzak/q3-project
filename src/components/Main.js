@@ -1,37 +1,23 @@
 import React, { Component } from 'react';
 import Movie from './Movie'
 import WatchList from './WatchList'
-import CommentList from './CommentList'
+import HomePage from './HomePage'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.css';
-import { Container, Col, Row } from 'reactstrap'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
 
 class Main extends Component {
   render () {
     return (
-      <Container className="container">
-      <div>
-      <Row>
-      <Col>
-      <Movie />
-      </Col>
-      </Row>
+      <div className="container">
+        <div className="movie">
+          <Movie/>
+            </div>
+              <div className="watchlist">
+              <WatchList/>
+            </div>
       </div>
-      <div>
-      <Row>
-      <Col>
-      <CommentList />
-      </Col>
-      </Row>
-      </div>
-      <div>
-      <Row>
-      <Col>
-      <WatchList />
-      </Col>
-      </Row>
-      </div>
-      </Container>
 
 
     )

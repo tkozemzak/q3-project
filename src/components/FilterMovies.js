@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { searchMovies } from '../redux/actions/movieActions'
-import { clickMovie } from '../redux/actions/movieActions'
 import { bindActionCreators } from 'redux'
 import SearchedItem from './SearchedItem'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
@@ -25,10 +24,14 @@ toggle() {
     return (
       <div>
       <Dropdown disable isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-      <DropdownToggle caret>
+      <DropdownToggle color="primary" caret>
           Search Movies
         </DropdownToggle>
-      <DropdownMenu>
+      <DropdownMenu style={{
+        background: "black",
+        border: "none",
+        opacity: "0.9"
+      }}>
       <DropdownItem disabled>
         <input type="text" placeholder="Search By Title" onChange={e => this.props.searchMovies(e.target.value)} />
       </DropdownItem>
@@ -41,14 +44,12 @@ toggle() {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  searchMovies,
-  clickMovie
+  searchMovies
 }, dispatch)
 
 const mapStateToProps = (state) => {
   return {
     items: state.movies.searchedMovies
-
   }
 }
 

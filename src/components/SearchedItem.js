@@ -1,5 +1,5 @@
 import React from 'react'
-import { DropdownItem } from 'reactstrap'
+import { DropdownItem, Button } from 'reactstrap'
 import { clickMovie } from '../redux/actions/movieActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -14,7 +14,12 @@ const handleClick = (e) => {
 }
 
   return (
-    <DropdownItem disable> <button onClick={e => handleClick(e)}>{props.item.original_title}</button></DropdownItem>
+    <DropdownItem disable> <Button style={{
+      background: "transparent",
+      border: "none",
+      fontSize: "20px"
+    }}
+    onClick={e => handleClick(e)}>{props.item.original_title}</Button></DropdownItem>
   )
 }
 

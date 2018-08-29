@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
-import {  } from 'reactstrap';
+import "../App.css"
 
 
-export default class Comment extends Component {
 
 
-  render() {
+
+class Comment extends Component {
+    render() {
+
     return (
-      <div>
-
+      <div className="comment-card">
+      <p>{this.props.item.content}</p>
+      <p>- {this.props.item.comment_name}</p>
       </div>
-    )
+    );
   }
 }
+
+export default Comment
