@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Movie from './Movie'
 import WatchList from './WatchList'
-import HomePage from './HomePage'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
+import { connect } from 'react-redux'
 
 class Main extends Component {
   render () {
@@ -18,10 +16,15 @@ class Main extends Component {
               <WatchList/>
             </div>
       </div>
-
-
     )
   }
 }
 
-export default Main;
+
+function mapStateToProps(state) {
+  return {
+    user: state.auth.user
+  }
+}
+
+export default connect(mapStateToProps, null)(Main)

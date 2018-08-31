@@ -18,6 +18,15 @@ module.exports = {
     }).then((results)=>{
       res.send({results: results})
     })
-  }
+  },
+
+  delete: function(req, res) {
+    console.log(req.params);
+    knex("comment").where("id", req.params.id).del()
+  .then((results) => {
+    res.json(results);
+  })
+},
+
 
 }

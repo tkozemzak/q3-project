@@ -1,7 +1,7 @@
 import {
   FETCH_COMMENTS,
   ADD_COMMENT,
-  REMOVE_COMMENT
+  DELETE_COMMENT
 } from '../actions/commentActions'
 
 let initialState = {
@@ -22,11 +22,10 @@ export default (state = initialState, action) => {
         comments: [...state.comments, ...action.payload].sort((a,b)=> a.id > b.id)
       }
 
-    case REMOVE_COMMENT:
-    let newWatchList = state.watchList.filter(item => item.id !== action.payload)
+    case DELETE_COMMENT:
+    let newCommentList = state.comments.filter(item => item.id !== action.payload)
       return {
-        ...state,
-        watchList: [...newWatchList].sort((a,b)=> a.id > b.id)
+        comments: [...newCommentList].sort((a,b)=> a.id > b.id)
       }
     default:
       return state

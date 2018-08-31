@@ -1,20 +1,46 @@
 import React, { Component } from 'react';
 import "../App.css"
+import { connect } from 'react-redux'
+import { deleteComment } from '../redux/actions/commentActions'
+import { bindActionCreators } from 'redux'
 
 
 
 
 
 class Comment extends Component {
+
+  state = {
+    edittedComment: ''
+  }
+
+  handleDelete = e => {
+    e.preventDefault()
+    this.props.deleteComment(this.props.item.id)
+  }
     render() {
+console.log("props in comment", this.props.item.id);
+
 
     return (
       <div className="comment-card">
-      <p>{this.props.item.content}</p>
-      <p>- {this.props.item.comment_name}</p>
+      <p className="comment-content">{this.props.item.content}</p>
+      <p className="comment-name">- {this.props.item.comment_name}</p>
+      {this.props.item.comment_name === this.props.currentUser.first_name ?
+        <div>
+        <button onClick={this.handleDelete}>Delete</button>
+        </div> : null}
       </div>
     );
   }
 }
 
-export default Comment
+const mapStateToProps = state => ({
+  currentUser: state.auth.user
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  deleteComment
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comment)

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const ADD_COMMENT = "ADD_COMMENT"
-export const REMOVE_COMMENT = "REMOVE_COMMENT"
+export const DELETE_COMMENT = "DELETE_COMMENT"
 export const FETCH_COMMENTS = "FETCH_COMMENTS"
 
 export const fetchComments = () => {
@@ -28,15 +28,28 @@ export const addComment = (newComment) => {
             type: FETCH_COMMENTS,
             payload: response.data
           }))
-      
+
       })
   }
 }
-export const removeComment = (comment) => {
+
+export const deleteComment = (id) => {
   return dispatch => {
-    dispatch({
-      type: REMOVE_COMMENT,
-      payload: comment
-    })
+    axios.delete(`http://localhost:8000/comments/${id}`)
+      .then(response => dispatch ({
+        type: DELETE_COMMENT,
+        payload: id
+      })).then(()=>{
+        axios.get(`http://localhost:8000/comments`)
+          .then(response => dispatch ({
+            type: FETCH_COMMENTS,
+            payload: response.data
+          }))
+
+      })
   }
 }
+
+
+
+//

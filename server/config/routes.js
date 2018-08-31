@@ -2,20 +2,21 @@
 module.exports = function(app){
 
 const comments = require("../controllers/comments.js")
+const register = require("../controllers/register.js")
+const login = require("../controllers/login.js")
 
-
+//comments
   app.get('/comments', comments.index);
   app.post('/comments', comments.create);
+  app.delete('/comments/:id', comments.delete);
 
-//app.use(authenticateUser)
+  //register
+  app.post('/signup', register.register)
 
-}
+  //login
+  app.post('/login', login.login)
 
-function authenticateUser(req, res, next){
-  console.log('authuser', req.method);
-  if(!req.session.user){
-    res.redirect('/');
-  } else {
-    next();
-  }
+
+
+
 }
