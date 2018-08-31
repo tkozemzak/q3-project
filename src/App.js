@@ -4,6 +4,7 @@ import Main from './components/Main'
 import Login from './components/Login'
 import TopNav from './components/TopNav'
 import Signup from './components/Signup'
+import { connect } from 'react-redux'
 
 import {
   BrowserRouter as Router,
@@ -27,6 +28,15 @@ class App extends Component {
       </div>
     );
   }
+  componentDidMount(){
+    // this.props.currentUser ? localStorage.setItem('currentUser', this.props.currentUser) : null
+
+  }
 }
 
-export default App
+const mapStateToProps = state => ({
+  currentUser: state.auth.user
+})
+
+
+export default connect(mapStateToProps)(App)

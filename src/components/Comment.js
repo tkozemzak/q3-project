@@ -3,6 +3,7 @@ import "../App.css"
 import { connect } from 'react-redux'
 import { deleteComment } from '../redux/actions/commentActions'
 import { bindActionCreators } from 'redux'
+import { Button } from 'reactstrap'
 
 
 
@@ -28,7 +29,7 @@ console.log("props in comment", this.props.item.id);
       <p className="comment-name">- {this.props.item.comment_name}</p>
       {this.props.item.comment_name === this.props.currentUser.first_name ?
         <div>
-        <button onClick={this.handleDelete}>Delete</button>
+        <Button color="primary" onClick={this.handleDelete}>Delete</Button>
         </div> : null}
       </div>
     );

@@ -5,6 +5,7 @@ export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
 export const USER_SIGNUP_PENDING = 'USER_SIGNUP_PENDING'
 export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS'
 export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED'
+export const FETCH_USER = 'FETCH_USER'
 
 export const USER_LOGOUT = 'USER_LOGOUT'
 
@@ -20,6 +21,7 @@ export const userLogin = ({email, password}, history) => {
         body: JSON.stringify({email, password})
       })
       let userObject = await response.json()
+      localStorage.setItem('currentUser', JSON.stringify(userObject))
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: userObject
@@ -60,7 +62,23 @@ export const userSignup = (newUser, history) => {
 };
 
 export const userLogout = () => {
+  localStorage.removeItem("currentUser")
+
   return async (dispatch) => {
     dispatch({type: USER_LOGOUT})
   }
+}
+
+export const fetchUser = () => {
+
+  return dispatch => {
+    let user = JSON.parse(localStorage.getItem("currentUser"))
+    user ?
+    dispatch({
+      type: FETCH_USER,
+      payload: user
+    })
+    : null
+  }
+
 }

@@ -32,6 +32,10 @@ class Login extends Component {
     return (
       <Container className="main-wrapper">
         <Row >
+        <div className="login-container">
+        <Col>
+        <h1>Login</h1>
+        </Col>
           <Col
             style={{
               border: '1px solid #c9c5c2',
@@ -42,6 +46,7 @@ class Login extends Component {
               color: "white"
             }}
           >
+
             <Form onSubmit={this.submitLogin}>
               <FormGroup>
                 <Label for="email-field">Email</Label>
@@ -75,7 +80,9 @@ class Login extends Component {
                 Submit
               </Button>
             </Form>
+
           </Col>
+          </div>
         </Row>
       </Container>
     )

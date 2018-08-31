@@ -5,7 +5,8 @@ import {
   USER_SIGNUP_PENDING,
   USER_SIGNUP_SUCCESS,
   USER_SIGNUP_FAILED,
-  USER_LOGOUT
+  USER_LOGOUT,
+  FETCH_USER
 } from '../actions/authActions'
 
 let initialState = {
@@ -31,6 +32,12 @@ export default(state = initialState, action) => {
       return {...state, isLoading: false, showSignupError: true}
     case USER_LOGOUT:
       return {...state, user: {}}
+    case FETCH_USER:
+      console.log('USER',action.payload)
+      return {
+        ...state,
+        user: action.payload
+      }
     default:
       return state;
   }

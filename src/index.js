@@ -5,12 +5,14 @@ import App from './App';
 import store from './redux/store'
 import { fetchMovies } from './redux/actions/movieActions'
 import { fetchComments } from './redux/actions/commentActions'
+import { fetchUser } from './redux/actions/authActions'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
 
 let newStore = store()
 
+newStore.dispatch(fetchUser())
 newStore.dispatch(fetchMovies())
 newStore.dispatch(fetchComments())
 

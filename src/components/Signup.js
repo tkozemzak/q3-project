@@ -44,6 +44,10 @@ export class Signup extends Component {
     return (
       <Container className="main-wrapper">
         <Row className="signup-container" style={{ marginTop: '10vh', marginBottom: '10vh' }}>
+        <div>
+        <Col>
+        <h1>Register</h1>
+        </Col>
           <Col
             style={{
               border: '1px solid #c9c5c2',
@@ -133,6 +137,7 @@ export class Signup extends Component {
               </Button>
             </Form>
           </Col>
+          </div>
         </Row>
       </Container>
     )
